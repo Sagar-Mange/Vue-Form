@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      <!-- <img alt="background gray" src="../assets/download.jpeg" width="100%"> -->
       <div class="container">
         <center>
       <h1> <b> Edit Posts </b> </h1>
@@ -26,8 +27,8 @@ export default {
   data() {
     return {
       id: 1,
-      title: "",
-      body: "",
+      title: this.title,
+      body: this.body
     };
   },
   methods: {

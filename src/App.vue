@@ -1,5 +1,7 @@
 <template>
-    <div style="margin-top:8%" id="trainee-table">
+<div>
+  <ref></ref>
+    <!-- <div style="margin-top:8%;margin-bottom:8%" id="trainee-table">
         <div v-if="!addPost && !EditPost">
         <div class="container">
         <div class="table-wrapper">
@@ -18,12 +20,6 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
                         <th>User Id</th>
                         <th>Title</th>
                         <th>Body</th>
@@ -33,21 +29,19 @@
                 <tbody>
                     
                     <tr v-for="(post,index) in posts" :key="index">
-                        <td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</td>
+            
                         <td >{{ post.userId}}</td>
-
+                        
+                        
                         <td v-if="post.title.length<100" v-b-tooltip.hover :title=post.title> {{ post.title }}</td>
                         <td v-else v-b-tooltip.hover :title=post.title >{{ post.title.substring(0,7)+"......." }}</td>
+                        
+                       
                         <td v-if="post.body.length<100" v-b-tooltip.hover :title=post.body> {{ post.body }}</td>
                         <td v-else v-b-tooltip.hover :title=post.body>{{ post.body.substring(0,15)+"......." }}</td>
 
                         <td>
-                            <a href="#"  @click="editPost(index,post._id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                            <a href="#" @click="editPost(index,post._id)" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                             <a href="#" @click="deletePost(index,post._id)" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                         </td>
                     </tr>
@@ -60,20 +54,26 @@
         <addPost v-show="addPost" :post="post" :addPost="addPost" :postId="postId" @getData="getData($event)"/>
         <editPost v-show="EditPost" :post="post" :Editpost="EditPost" :postId="postId" @geteditData="geteditData($event)"/>   
     </div>
-    </div> 
+    </div> -->
+</div>
 </template>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <script>
+/* eslint-disable */
 import axios from 'axios'
 import addPost from '@/components/addPost.vue'
 import editPost from '@/components/editPost.vue'
+import ref from '@/components/ref.vue'
+
 const API_URL = 'http://192.168.2.65:3030/posts/'
 export default {
     name: 'trainee-table',
     components:{
       'addPost': addPost,
-      'editPost': editPost
+      'editPost': editPost,
+      'ref': ref
     },
     data(){
       return {

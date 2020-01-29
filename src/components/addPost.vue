@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- <img alt="background gray" src="../assets/download.jpeg" width="100%"> -->
     <div id="add" style="display:block">
       <div class="container">
         <center>
