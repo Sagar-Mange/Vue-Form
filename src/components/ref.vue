@@ -9,7 +9,7 @@
 
             <div>
                 <h1> PREVIEW </h1>
-                <p> </p>
+                <p> {{preview}} </p>
             </div>
     </div>
 </template>
@@ -21,7 +21,8 @@ export default {
     data () {
         return {
             data: '',
-            color: 'background'                 // dynamic class
+            color: 'background',    // dynamic class
+            preview: ''
         }
     },
     components: {
@@ -35,15 +36,17 @@ export default {
             console.log(reg.test(this.$refs.input.value))
             console.log(this.$refs.input)
             console.log(this.$refs)
-            console.log(this.$refs.input.autocapitalize="true")
+            console.log(this.$refs.input.autocapitalize="true") // it not supported for <input> element with a type attribute whose value is url, email, or password
             
             if(check == true)
-            {''
-                return this.$refs.input.style.background = 'yellow' 
+            {
+                this.$refs.input.style.background = 'yellow'
+                this.preview = "email is valid" 
                 console.log("email is valid")
             }
             else {
-                return this.$refs.input.style.background = 'red'
+                this.$refs.input.style.background = 'red'
+                this.preview = "email is invalid"
                 console.log("email is invalid")
             }
         }
